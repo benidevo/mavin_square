@@ -40,7 +40,7 @@ const CountDown = () => {
         
       
     useEffect(() => {
-        setInterval(() => getEventCountdown('aug , 20, 2021, 01:25:00'), 1000)
+        setInterval(() => getEventCountdown('aug, 20, 2021, 01:25:00'), 1000)
     }, [getEventCountdown])
 
     return (
