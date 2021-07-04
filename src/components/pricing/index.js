@@ -2,7 +2,7 @@ import React from 'react';
 import MyButton from '../utils/MyButton';
 import {Zoom} from 'react-awesome-reveal';
 
-const Princing = () => {
+const Pricing = () => {
     const priceState = {
         prices:[100,150,200],
         position:['Balcony','Medium','Star'],
@@ -54,4 +54,4 @@ const Princing = () => {
     )
 }
 
-export default Princing;
+export default Pricing;
