@@ -1,35 +1,48 @@
-import React from 'react'
+import React from 'react';
+import { scroller } from 'react-scroll'
 
-import { Drawer, List, ListItem } from '@material-ui/core';
+import { Drawer, List, ListItem } from '@material-ui/core'
 
-const SideDrawer = props => {
+const SideDrawer = (props) => {
     const links = [
-        { location: 'featured', value: 'To top' },
-        { location: 'venueinfo', value: 'Venue Info' },
-        { location: 'highlights', value: 'Highlights' },
-        { location: 'pricing', value: 'Pricing' },
-        { location: 'location', value: 'Location' }, 
+        { where:'featured',value:'To top'},
+        { where:'venuenfo',value:'Venue NFO'},
+        { where:'highlights',value:'Highlights'},
+        { where:'pricing',value:'Pricing'},
+        { where:'location',value:'Location'}
     ]
 
-    return (
-        <Drawer
-            anchor="right"
-            open={props.open}
-            onClose={() => props.onClose(false)}
-        >
-            <List compoment="nav">
-                {links.map(link => {
-                    return (
-                        <ListItem button key={link.location}>
-                            {link.value}
-                        </ListItem>
-                    )
-                })}
-                
 
+    const scrollToElement = (element) => {
+        scroller.scrollTo(element,{
+            duration:1500,
+            delay:100,
+            smooth: true,
+            offset:-150
+        });
+        props.onClose(false)
+    }
+
+    const renderItem = (item) => (
+        <ListItem button onClick={()=> scrollToElement(item.where)} key={item.where}>
+            {item.value}
+        </ListItem>
+    )
+
+
+    return(
+        <Drawer
+            anchor={"right"}
+            open={props.open}
+            onClose={()=> props.onClose(false)}
+        >
+            <List component="nav">
+                { links.map((item)=> renderItem(item) )}
+                
             </List>
         </Drawer>
     )
+
 }
 
-export default SideDrawer
+export default SideDrawer;
